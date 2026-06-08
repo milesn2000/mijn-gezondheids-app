@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workout toevoegen</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Roboto:ital,wght@0,100..900;1,100..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <script src="app.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Nieuwe workout</h1>
+        <nav>
+            <a href="index.html">dashbord</a>
+            <a href="invoer.html">nieuwe Workout</a>
+            <a href="overzicht.html">overzicht</a>
+        </nav>
+    </header>
+    <main  class="invoer">
+        <form>
+            <div>
+                <label for="datum">datum</label>
+                <input type="date" id="datum">
+            </div>
+            <div>
+                <label for="categorie">categorie</label>
+                <select id="categorie">
+                    <option></option>
+                    <option>kracht</option>
+                    <option>cardio</option>
+                    <option>stretchen</option>
+                </select>
+            </div>
+            <div>
+                <label for="oefening">oefening</label>
+                <input type="text" id="oefening" placeholder="bijv. benchpress">
+            </div>
+            <div>
+                <label for="sets">sets</label>
+                <input type="number" id="sets">
+            </div>
+            <div>
+                <label for="reps">reps</label>
+                <input type="number" id="reps">
+            </div>
+            <div>
+                <label for="gewicht">gewicht</label>
+                <input type="number" id="gewicht">
+            </div>
+            <div>
+                <label for="duur">duur (minuten)</label>
+                <input type="number" id="duur">
+            </div>
+            <button type="submit">opslaan</button>
+        </form>
+    </main>
+    <footer>
+        <p>Miles Nouwens</p> <!-- naam -->
+        <p>IHO25S1A 2026</p> <!-- klas/jaar -->
+    </footer>
+</body>
+</html>

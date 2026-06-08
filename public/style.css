@@ -1,0 +1,139 @@
+/* algemeen */
+nav
+{
+    display: flex;
+    justify-content: space-between;
+}
+a
+{
+    color: #fff;
+    text-decoration: none;
+    padding: 10px;
+}
+body 
+{
+    font-family: 'Nunito', sans-serif;
+    background-color: #0f0f23;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+header
+{
+    background-color: #4361ee;
+    padding: 10px;
+}
+
+h1
+{
+    text-align: center;
+}
+/* index.html */
+.index main
+{
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.index section
+{
+    background-color: #4361ee;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color :#fff;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+
+.index button
+{
+    width: 100%;
+    background-color: #4361ee;
+    border: none;
+    padding: 10px;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+
+
+
+
+
+/* invoer.html */
+.invoer form
+{
+    width: 400px;
+    margin: 0 auto;
+}
+
+.invoer div
+{
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.invoer select, .invoer input
+{
+    width: 100%;
+    background-color: #4361ee;
+    border: none;
+    padding: 10px;
+    color: #fff; 
+    border-radius: 5px;
+}
+
+.invoer button
+{
+    width: 100%;
+    background-color: #4361ee;
+    border: none;
+    padding: 10px;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+    
+
+
+/* overzicht.html */
+
+.overzicht section
+{
+    display: flex;
+    justify-content: space-between;
+}
+.overzicht button
+{
+    background-color: #4361ee;
+    border: none;
+    padding: 10px;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    width: auto;
+}
+
+.overzicht ul
+{
+    list-style: none;
+    padding: 0;
+}
+
+.overzicht li
+{
+    margin-bottom: 10px;
+    background-color: #4361ee;
+    padding: 10px;
+    color: #fff;
+    border-radius: 5px;
+}
