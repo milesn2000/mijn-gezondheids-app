@@ -1,8 +1,10 @@
 const form = document.querySelector('form');
+console.log('form:', form)
 if (form) 
 {
     form.addEventListener('submit', function(event)
     {
+        console.log('formulier verstuurd')
         event.preventDefault()
         const opgeslagen = localStorage.getItem('workouts');
         const workouts = opgeslagen ? JSON.parse(opgeslagen) : []
@@ -32,5 +34,18 @@ const lijst = document.querySelector('#workout-lijst')
 
 if(lijst)
 {
-    
+    const workouts = JSON.parse(localStorage.getItem('workouts'))
+    workouts.forEach(workout => 
+    {
+        const li = document.createElement('li')
+        li.innerHTML = '<strong>' + workout.datum + '</strong><br>' +
+        workout.categorie + '<br>' +
+        workout.oefening + '<br>' +
+        workout.sets + ' sets<br>' +
+        workout.reps + ' reps<br>' +
+        workout.gewicht + ' kg<br>' +
+        workout.duur + ' min' +
+        '<br>"<button data-index="' + index + '">Verwijderen</button>'
+        lijst.appendChild(li)
+    })  
 }
