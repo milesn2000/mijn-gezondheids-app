@@ -9,24 +9,24 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Roboto:ital,wght@0,100..900;1,100..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
         <script src="app.js" defer></script>
+        <link rel="manifest" href="manifest.json">
     </head>
     <body>
         <header>
             <h1>overzicht</h1>
             <nav>
-                <a href="index.html">dashbord</a>
-                <a href="invoer.html">nieuwe Workout</a>
-                <a href="overzicht.html">overzicht</a>
+                <a href="index.html" data-nl="dashboard" data-en="dashboard">dashbord</a>
+                <a href="invoer.html" data-nl="nieuwe Workout" data-en="new Workout">nieuwe Workout</a>
+                <a href="overzicht.html" data-nl="overzicht" data-en="overview">overzicht</a>
+                <button id="taalswitch">EN</button>
             </nav>
         </header>
         <main class="overzicht">
-            <!-- 3 knoppen voor dag/week/maand overzicht -->
             <section>
-                <button>dag</button>
-                <button>week</button>
-                <button>maand</button>
+                <button id="dag" data-nl="dag" data-en="day">dag</button>
+                <button id="week" data-nl="week" data-en="week">week</button>
+                <button id="maand" data-nl="maand" data-en="month">maand</button>
             </section>
-            <!-- wourkour lijst die javascript gaat invullen -->
             <ul id="workout-lijst">
 
             </ul>

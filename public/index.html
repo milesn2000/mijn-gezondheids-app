@@ -9,14 +9,16 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Roboto:ital,wght@0,100..900;1,100..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
         <script src="app.js" defer></script>
+        <link rel="manifest" href="manifest.json">
     </head>
     <body>
         <header>
             <h1>workout tracker</h1>
             <nav>
-                <a href="index.html">dashbord</a>
-                <a href="invoer.html">nieuwe Workout</a>
-                <a href="overzicht.html">overzicht</a>
+                <a href="index.html" data-nl="dashboard" data-en="dashboard">dashbord</a>
+                <a href="invoer.html" data-nl="nieuwe Workout" data-en="new Workout">nieuwe Workout</a>
+                <a href="overzicht.html" data-nl="overzicht" data-en="overview">overzicht</a>
+                <button id="taalswitch">EN</button>
             </nav>
         </header>
 
@@ -25,21 +27,21 @@
         <main class="index">
             <!-- sammenvatting vandaag -->
             <section>
-                <h2>Vandaag</h2>
-                <p>Workout: 0</p>
-                <p>duur: 0 minuten</p>
+                <h2 data-nl="vandaag" data-en="today">Vandaag</h2>
+                <p data-nl="wourkout" data-en="workout">Workout: 0</p>
+                <p data-nl="duur: 0 minuten" data-en="duration: 0 minutes">duur: 0 minuten</p>
 
             </section>
 
             <!-- samenvatting week -->
             <section>
-                <h2>Week</h2>
-                <p>Workouts: 0</p>
-                <p>duur: 0 minuten</p>  
+                <h2 data-nl="week" data-en="week">Week</h2>
+                <p data-nl="wourkout: 0" data-en="workout: 0">Workouts: 0</p>
+                <p data-nl="duur: 0 minuten" data-en="duration: 0 minutes">duur: 0 minuten</p>  
             </section>
 
             <!-- groote button om nieuwe workout te maken -->
-            <button>Workout toevoegen</button>
+            <a href="invoer.html" data-nl="nieuwe Workout" data-en="new Workout" class="button-link">Workout toevoegen</a>
         </main>
 
 

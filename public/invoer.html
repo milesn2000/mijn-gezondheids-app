@@ -9,24 +9,26 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Roboto:ital,wght@0,100..900;1,100..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <script src="app.js" defer></script>
+    <link rel="manifest" href="manifest.json">
 </head>
 <body>
     <header>
         <h1>Nieuwe workout</h1>
         <nav>
-            <a href="index.html">dashbord</a>
-            <a href="invoer.html">nieuwe Workout</a>
-            <a href="overzicht.html">overzicht</a>
+            <a href="index.html" data-nl="dashboard" data-en="dashboard">dashbord</a>
+            <a href="invoer.html" data-nl="nieuwe Workout" data-en="new Workout">nieuwe Workout</a>
+            <a href="overzicht.html" data-nl="overzicht" data-en="overview">overzicht</a>
+            <button id="taalswitch">EN</button>
         </nav>
     </header>
     <main  class="invoer">
         <form>
             <div>
-                <label for="datum">datum</label>
+                <label for="datum" data-nl="datum" data-en="date">datum</label>
                 <input type="date" id="datum">
             </div>
             <div>
-                <label for="categorie">categorie</label>
+                <label for="categorie" data-nl="categorie" data-en="category">categorie</label>
                 <select id="categorie">
                     <option></option>
                     <option>kracht</option>
@@ -35,26 +37,26 @@
                 </select>
             </div>
             <div>
-                <label for="oefening">oefening</label>
+                <label for="oefening" data-nl="oefening" data-en="exercise">oefening</label>
                 <input type="text" id="oefening" placeholder="bijv. benchpress">
             </div>
             <div>
-                <label for="sets">sets</label>
+                <label for="sets" data-nl="sets" data-en="sets">sets</label>
                 <input type="number" id="sets">
             </div>
             <div>
-                <label for="reps">reps</label>
+                <label for="reps" data-nl="reps" data-en="reps">reps</label>
                 <input type="number" id="reps">
             </div>
             <div>
-                <label for="gewicht">gewicht</label>
+                <label for="gewicht" data-nl="gewicht" data-en="weight">gewicht</label>
                 <input type="number" id="gewicht">
             </div>
             <div>
-                <label for="duur">duur (minuten)</label>
+                <label for="duur" data-nl="duur (minuten)" data-en="duration (minutes)">duur (minuten)</label>
                 <input type="number" id="duur">
             </div>
-            <button type="submit">opslaan</button>
+            <button type="submit" data-nl="opslaan" data-en="save">opslaan</button>
         </form>
     </main>
     <footer>
