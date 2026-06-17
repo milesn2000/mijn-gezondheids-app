@@ -4,6 +4,7 @@ nav
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 0 10px;
 }
 
 #taalswitch
@@ -15,12 +16,14 @@ nav
     border-radius: 5px;
     cursor: pointer;
 }
+
 a
 {
     color: #fff;
     text-decoration: none;
     padding: 10px;
 }
+
 body 
 {
     font-family: 'Nunito', sans-serif;
@@ -39,9 +42,19 @@ header
 h1
 {
     text-align: center;
+    margin: 10px 0;
 }
+
+footer
+{
+    text-align: center;
+    margin-top: 20px;
+    padding: 20px;
+    color: #fff;
+}
+
 /* index.html */
-.index main
+.index
 {
     max-width: 600px;
     margin: 0 auto;
@@ -50,62 +63,74 @@ h1
 
 .index section
 {
-    background-color: #4361ee;
+    background-color: #1a1a3e;
     display: flex;
     flex-direction: column;
     align-items: center;
-    color :#fff;
+    padding: 20px;
     margin-top: 20px;
-    border-radius: 5px;
+    border-radius: 10px;
+    border: 1px solid #4361ee;
 }
 
-.index button
+.index section h2
 {
+    margin: 0 0 10px 0;
+}
+
+.index section p
+{
+    margin: 5px 0;
+}
+
+.index .button-link
+{
+    display: block;
     width: 100%;
     background-color: #4361ee;
     border: none;
-    padding: 10px;
+    padding: 15px;
     color: #fff;
-    border-radius: 5px;
+    border-radius: 10px;
     cursor: pointer;
     margin-top: 20px;
-}
-
-footer
-{
     text-align: center;
-    margin-top: 20px;
-    color: #fff;
+    font-size: 1.1em;
+    box-sizing: border-box;
 }
-
-
-
-
-
 
 /* invoer.html */
 .invoer form
 {
-    width: 400px;
-    margin: 0 auto;
+    width: 100%;
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 0 20px;
+    box-sizing: border-box;
 }
 
 .invoer div
 {
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     display: flex;
     flex-direction: column;
+}
 
+.invoer label
+{
+    margin-bottom: 5px;
+    font-weight: 600;
 }
 
 .invoer select, .invoer input
 {
     width: 100%;
-    background-color: #4361ee;
-    border: none;
+    background-color: #1a1a3e;
+    border: 1px solid #4361ee;
     padding: 10px;
-    color: #fff; 
+    color: #fff;
     border-radius: 5px;
+    box-sizing: border-box;
 }
 
 .invoer button
@@ -113,22 +138,29 @@ footer
     width: 100%;
     background-color: #4361ee;
     border: none;
-    padding: 10px;
+    padding: 12px;
     color: #fff;
     border-radius: 5px;
     cursor: pointer;
+    font-size: 1em;
+    margin-top: 5px;
 }
 
-    
-
-
 /* overzicht.html */
+.overzicht
+{
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
 
 .overzicht section
 {
     display: flex;
     justify-content: space-between;
+    gap: 10px;
 }
+
 .overzicht button
 {
     background-color: #4361ee;
@@ -139,19 +171,66 @@ footer
     cursor: pointer;
     margin-top: 20px;
     width: auto;
+    flex: 1;
 }
 
 .overzicht ul
 {
     list-style: none;
     padding: 0;
+    margin-top: 20px;
 }
 
 .overzicht li
 {
     margin-bottom: 10px;
-    background-color: #4361ee;
-    padding: 10px;
+    background-color: #1a1a3e;
+    padding: 15px;
+    color: #fff;
+    border-radius: 10px;
+    border: 1px solid #4361ee;
+    line-height: 1.8;
+}
+
+.overzicht li button
+{
+    background-color: #e63946;
+    border: none;
+    padding: 5px 10px;
     color: #fff;
     border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+/* responsive desktop */
+@media(min-width: 768px)
+{
+    .index
+    {
+        max-width: 800px;
+    }
+
+    .index section
+    {
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .invoer form
+    {
+        max-width: 600px;
+    }
+
+    .overzicht
+    {
+        max-width: 800px;
+    }
+
+    .overzicht ul
+    {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
 }

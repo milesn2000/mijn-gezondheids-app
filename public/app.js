@@ -125,3 +125,29 @@ if(taalswitch)
         })
     })
 }
+
+
+const vandaagAantal = document.getElementById('vandaag-aantal')
+const vandaagDuur = document.getElementById('vandaag-duur')
+const weekAantal = document.getElementById('week-aantal')
+const weekDuur = document.getElementById('week-duur')
+
+if(vandaagAantal)
+{
+    const workouts = JSON.parse(localStorage.getItem('workouts')) || []
+    const vandaag = new Date().toISOString().split('T')[0]
+
+    const vandaagWorkouts = workouts.filter(w => w.datum === vandaag)
+    const weekWorkouts = workouts.filter(w => {
+        const diff = (new Date(vandaag) - new Date(w.datum)) / (1000 * 60 * 60 * 24)
+        return diff <= 7
+    })
+
+    const vandaagTotaalDuur = vandaagWorkouts.reduce((sum, w) => sum + Number(w.duur), 0)
+    const weekTotaalDuur = weekWorkouts.reduce((sum, w) => sum + Number(w.duur), 0)
+
+    vandaagAantal.textContent = 'Workout: ' + vandaagWorkouts.length
+    vandaagDuur.textContent = 'duur: ' + vandaagTotaalDuur + ' minuten'
+    weekAantal.textContent = 'Workouts: ' + weekWorkouts.length
+    weekDuur.textContent = 'duur: ' + weekTotaalDuur + ' minuten'
+}
