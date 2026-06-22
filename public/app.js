@@ -109,8 +109,9 @@ if(maandBtn)
     })
 }
 
+
 const taalswitch = document.getElementById('taalswitch')
-let taal = 'nl'
+let taal = localStorage.getItem('taal') || 'nl'
 
 if(taalswitch)
 {
@@ -118,11 +119,19 @@ if(taalswitch)
     {
         taal = taal === 'nl' ? 'en' : 'nl'
         taalswitch.textContent = taal === 'nl' ? 'EN' : 'NL'
-
+        localStorage.setItem('taal', taal)
         document.querySelectorAll('[data-nl]').forEach(function(element)
         {
             element.textContent = element.dataset[taal]
         })
+    })
+}
+if(taal === 'en' && taalswitch)
+{
+    taalswitch.textContent = 'NL'
+    document.querySelectorAll('[data-nl]').forEach(function(element)
+    {
+        element.textContent = element.dataset[taal]
     })
 }
 
@@ -150,4 +159,48 @@ if(vandaagAantal)
     vandaagDuur.textContent = 'duur: ' + vandaagTotaalDuur + ' minuten'
     weekAantal.textContent = 'Workouts: ' + weekWorkouts.length
     weekDuur.textContent = 'duur: ' + weekTotaalDuur + ' minuten'
+}
+
+
+const grafiekCanvas = document.getElementById('categorieChart')
+if (grafiekCanvas) {
+    const workouts = JSON.parse(localStorage.getItem('workouts')) || []
+
+    const tellingen = { kracht: 0, cardio: 0, stretchen: 0 }
+    workouts.forEach(function(w) {
+        if (tellingen[w.categorie] !== undefined) {
+            tellingen[w.categorie]++
+        }
+    })
+
+    new Chart(grafiekCanvas, 
+    {
+        type: 'doughnut',
+        data: 
+        {
+            labels: ['Kracht', 'Cardio', 'Stretchen'],
+            datasets:
+            [{
+                data: [tellingen.kracht, tellingen.cardio, tellingen.stretchen],
+                backgroundColor: ['#4361ee', '#e63946', '#2dc653'],
+                borderWidth: 2,
+                borderColor: '#1a1a3e'
+            }]
+        },
+        options: 
+        {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: 
+            {
+                legend: 
+                {
+                    labels: 
+                    {
+                        color: '#ffffff'
+                    }
+                }
+            }
+        }
+    })
 }
