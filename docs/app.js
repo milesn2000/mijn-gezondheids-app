@@ -152,14 +152,24 @@ if(vandaagAantal)
         return diff <= 7
     })
 
-    const vandaagTotaalDuur = vandaagWorkouts.reduce((sum, w) => sum + Number(w.duur), 0)
-    const weekTotaalDuur = weekWorkouts.reduce((sum, w) => sum + Number(w.duur), 0)
+    function gemiddeldeDuur(workouts) {
+        if (workouts.length === 0) return 0
+        return Math.round(workouts.reduce(function(som, w) { return som + Number(w.duur) }, 0) / workouts.length)
+    }
+
+    function totaalGewicht(workouts) {
+        return workouts.reduce(function(som, w) { return som + Number(w.gewicht) }, 0)
+    }
+
+    const vandaagTotaalDuur = vandaagWorkouts.reduce(function(som, w) { return som + Number(w.duur) }, 0)
+    const weekTotaalDuur = weekWorkouts.reduce(function(som, w) { return som + Number(w.duur) }, 0)
 
     vandaagAantal.textContent = 'Workout: ' + vandaagWorkouts.length
-    vandaagDuur.textContent = 'duur: ' + vandaagTotaalDuur + ' minuten'
+    vandaagDuur.textContent = 'duur: ' + vandaagTotaalDuur + ' min | gem: ' + gemiddeldeDuur(vandaagWorkouts) + ' min'
     weekAantal.textContent = 'Workouts: ' + weekWorkouts.length
-    weekDuur.textContent = 'duur: ' + weekTotaalDuur + ' minuten'
+    weekDuur.textContent = 'duur: ' + weekTotaalDuur + ' min | gem: ' + gemiddeldeDuur(weekWorkouts) + ' min | gewicht: ' + totaalGewicht(weekWorkouts) + ' kg'
 }
+
 
 
 const grafiekCanvas = document.getElementById('categorieChart')
