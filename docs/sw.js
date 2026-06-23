@@ -2,7 +2,7 @@ self.addEventListener('install', function(event)
 {
     event.waitUntil
     (
-        caches.open('workout-cache-v2').then(function(cache)
+        caches.open('workout-cache-v3').then(function(cache)
         {
             return cache.addAll
             ([
