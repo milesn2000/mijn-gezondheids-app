@@ -21,6 +21,8 @@ if (form)
         const workout = { datum, categorie, oefening, sets, reps, gewicht, duur }
         workouts.push(workout)
         localStorage.setItem('workouts', JSON.stringify(workouts))
+        alert('Workout opgeslagen!')
+        window.location.href = 'overzicht.html'
     })
 }
 
@@ -109,9 +111,44 @@ if(maandBtn)
     })
 }
 
-
 const taalswitch = document.getElementById('taalswitch')
 let taal = localStorage.getItem('taal') || 'nl'
+
+function updateDashboard()
+{
+    const vandaagAantal = document.getElementById('vandaag-aantal')
+    const vandaagDuur = document.getElementById('vandaag-duur')
+    const weekAantal = document.getElementById('week-aantal')
+    const weekDuur = document.getElementById('week-duur')
+
+    if(!vandaagAantal) return
+
+    const workouts = JSON.parse(localStorage.getItem('workouts')) || []
+    const vandaag = new Date().toISOString().split('T')[0]
+
+    const vandaagWorkouts = workouts.filter(w => w.datum === vandaag)
+    const weekWorkouts = workouts.filter(w => {
+        const diff = (new Date(vandaag) - new Date(w.datum)) / (1000 * 60 * 60 * 24)
+        return diff <= 7
+    })
+
+    function gemiddeldeDuur(lijst) {
+        if (lijst.length === 0) return 0
+        return Math.round(lijst.reduce(function(som, w) { return som + Number(w.duur) }, 0) / lijst.length)
+    }
+
+    function totaalGewicht(lijst) {
+        return lijst.reduce(function(som, w) { return som + Number(w.gewicht) }, 0)
+    }
+
+    const vandaagTotaalDuur = vandaagWorkouts.reduce(function(som, w) { return som + Number(w.duur) }, 0)
+    const weekTotaalDuur = weekWorkouts.reduce(function(som, w) { return som + Number(w.duur) }, 0)
+
+    vandaagAantal.textContent = 'Workout: ' + vandaagWorkouts.length
+    vandaagDuur.textContent = 'duur: ' + vandaagTotaalDuur + ' min | gem: ' + gemiddeldeDuur(vandaagWorkouts) + ' min'
+    weekAantal.textContent = 'Workouts: ' + weekWorkouts.length
+    weekDuur.textContent = 'duur: ' + weekTotaalDuur + ' min | gem: ' + gemiddeldeDuur(weekWorkouts) + ' min | gewicht: ' + totaalGewicht(weekWorkouts) + ' kg'
+}
 
 if(taalswitch)
 {
@@ -124,6 +161,7 @@ if(taalswitch)
         {
             element.textContent = element.dataset[taal]
         })
+        updateDashboard()
     })
 }
 if(taal === 'en' && taalswitch)
@@ -135,45 +173,11 @@ if(taal === 'en' && taalswitch)
     })
 }
 
-
-const vandaagAantal = document.getElementById('vandaag-aantal')
-const vandaagDuur = document.getElementById('vandaag-duur')
-const weekAantal = document.getElementById('week-aantal')
-const weekDuur = document.getElementById('week-duur')
-
-if(vandaagAantal)
-{
-    const workouts = JSON.parse(localStorage.getItem('workouts')) || []
-    const vandaag = new Date().toISOString().split('T')[0]
-
-    const vandaagWorkouts = workouts.filter(w => w.datum === vandaag)
-    const weekWorkouts = workouts.filter(w => {
-        const diff = (new Date(vandaag) - new Date(w.datum)) / (1000 * 60 * 60 * 24)
-        return diff <= 7
-    })
-
-    function gemiddeldeDuur(workouts) {
-        if (workouts.length === 0) return 0
-        return Math.round(workouts.reduce(function(som, w) { return som + Number(w.duur) }, 0) / workouts.length)
-    }
-
-    function totaalGewicht(workouts) {
-        return workouts.reduce(function(som, w) { return som + Number(w.gewicht) }, 0)
-    }
-
-    const vandaagTotaalDuur = vandaagWorkouts.reduce(function(som, w) { return som + Number(w.duur) }, 0)
-    const weekTotaalDuur = weekWorkouts.reduce(function(som, w) { return som + Number(w.duur) }, 0)
-
-    vandaagAantal.textContent = 'Workout: ' + vandaagWorkouts.length
-    vandaagDuur.textContent = 'duur: ' + vandaagTotaalDuur + ' min | gem: ' + gemiddeldeDuur(vandaagWorkouts) + ' min'
-    weekAantal.textContent = 'Workouts: ' + weekWorkouts.length
-    weekDuur.textContent = 'duur: ' + weekTotaalDuur + ' min | gem: ' + gemiddeldeDuur(weekWorkouts) + ' min | gewicht: ' + totaalGewicht(weekWorkouts) + ' kg'
-}
-
-
+updateDashboard()
 
 const grafiekCanvas = document.getElementById('categorieChart')
-if (grafiekCanvas) {
+if (grafiekCanvas)
+{
     const workouts = JSON.parse(localStorage.getItem('workouts')) || []
 
     const tellingen = { kracht: 0, cardio: 0, stretchen: 0 }
