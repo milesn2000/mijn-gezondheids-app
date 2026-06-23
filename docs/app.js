@@ -111,8 +111,16 @@ if(maandBtn)
     })
 }
 
-const taalswitch = document.getElementById('taalswitch')
-let taal = localStorage.getItem('taal') || 'nl'
+function gemiddeldeDuur(lijst)
+{
+    if (lijst.length === 0) return 0
+    return Math.round(lijst.reduce(function(som, w) { return som + Number(w.duur) }, 0) / lijst.length)
+}
+
+function totaalGewicht(lijst)
+{
+    return lijst.reduce(function(som, w) { return som + Number(w.gewicht) }, 0)
+}
 
 function updateDashboard()
 {
@@ -132,15 +140,6 @@ function updateDashboard()
         return diff <= 7
     })
 
-    function gemiddeldeDuur(lijst) {
-        if (lijst.length === 0) return 0
-        return Math.round(lijst.reduce(function(som, w) { return som + Number(w.duur) }, 0) / lijst.length)
-    }
-
-    function totaalGewicht(lijst) {
-        return lijst.reduce(function(som, w) { return som + Number(w.gewicht) }, 0)
-    }
-
     const vandaagTotaalDuur = vandaagWorkouts.reduce(function(som, w) { return som + Number(w.duur) }, 0)
     const weekTotaalDuur = weekWorkouts.reduce(function(som, w) { return som + Number(w.duur) }, 0)
 
@@ -149,6 +148,9 @@ function updateDashboard()
     weekAantal.textContent = 'Workouts: ' + weekWorkouts.length
     weekDuur.textContent = 'duur: ' + weekTotaalDuur + ' min | gem: ' + gemiddeldeDuur(weekWorkouts) + ' min | gewicht: ' + totaalGewicht(weekWorkouts) + ' kg'
 }
+
+const taalswitch = document.getElementById('taalswitch')
+let taal = localStorage.getItem('taal') || 'nl'
 
 if(taalswitch)
 {
@@ -164,6 +166,7 @@ if(taalswitch)
         updateDashboard()
     })
 }
+
 if(taal === 'en' && taalswitch)
 {
     taalswitch.textContent = 'NL'
@@ -173,7 +176,7 @@ if(taal === 'en' && taalswitch)
     })
 }
 
-updateDashboard()
+setTimeout(function() { updateDashboard() }, 0)
 
 const grafiekCanvas = document.getElementById('categorieChart')
 if (grafiekCanvas)
